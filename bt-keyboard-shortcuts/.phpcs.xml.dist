@@ -1,0 +1,25 @@
+t<?xml version="1.0"?>
+<ruleset name="BT Keyboard Shortcuts">
+	<description>WordPress coding standards for BT Keyboard Shortcuts plugin.</description>
+	<file>.</file>
+	<exclude-pattern>/vendor/</exclude-pattern>
+	<exclude-pattern>/node_modules/</exclude-pattern>
+	<arg value="sp" />
+	<arg name="basepath" value="./" />
+	<arg name="colors" />
+	<arg name="extensions" value="php" />
+	<config name="testVersion" value="7.4-" />
+	<rule ref="PHPCompatibilityWP" />
+	<config name="minimum_supported_wp_version" value="5.8" />
+	<rule ref="WordPress" />
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array" value="btkbd,BTKBD" />
+		</properties>
+	</rule>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="bt-keyboard-shortcuts" />
+		</properties>
+	</rule>
+</ruleset>

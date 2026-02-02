@@ -1,0 +1,65 @@
+/**
+ * Frontend styles: keyboard key appearance for [kbd] shortcode output.
+ *
+ * @package BT_Keyboard_Shortcuts
+ */
+
+/* Wrapper: inline, no line-height bump */
+.btkbd {
+  line-height: 1;
+  vertical-align: top;
+  top: 2px;
+  position: relative;
+}
+
+.btkbd .keycombo {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.12em;
+  white-space: nowrap;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Each key: compact, sits on text line */
+.btkbd .keycombo kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25em;
+  height: 1.35em;
+  padding: 0 0.35em;
+  font-size: 0.8em;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  color: #1e1e1e;
+  background: linear-gradient(180deg, #f8f8f8 0%, #e8e8e8 100%);
+  border: 1px solid #c0c0c0;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.btkbd .keycombo kbd.mod {
+  font-size: 0.85em;
+}
+
+/* Separator between keys in a combo (e.g. + or -) */
+.btkbd .keycombo .combiner {
+  margin: 0 0.1em;
+  font-size: 0.85em;
+  color: #666;
+}
+
+/* Separator between multiple combos (e.g. /) */
+.btkbd .keycombo.separator {
+  margin: 0 0.35em;
+  font-size: 0.9em;
+  color: #888;
+  font-weight: 400;
+}
