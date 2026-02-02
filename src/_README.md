@@ -44,13 +44,12 @@ Under **Settings &rarr; Keyboard Shortcuts** (or via the plugin's **Settings** l
 
 ## Shortcode syntax
 
-| Syntax | Example | Output |
-|--------|---------|--------|
-| Modifiers + key | `[kbd cmd shift p]` | &#x2318;&#x21E7;P (symbols, combined) |
-| With + separator | `[kbd cmd shift p plus]` | &#x2318;+&#x21E7;+P |
-| Text labels | `[kbd cmd shift p text]` | Command-Shift-P |
-| Modifiers text, key symbol | `[kbd cmd p mod_text]` | Command-Shift-P |
-| Arrow keys | `[kbd right key_text]` | &rarr; Right Arrow |
+| Syntax           | Example                  | Output                                |
+| ---------------- | ------------------------ | ------------------------------------- |
+| Modifiers + key  | `[kbd cmd shift p]`      | &#x2318;&#x21E7;P (symbols, combined) |
+| Text labels      | `[kbd cmd shift p text]` | Shift-Command-P                       |
+| Shortcut symbols | `[kbd @$P]`              | Shift-Command-P                       |
+| Arrow keys       | `[kbd right]`            | &rarr; Right Arrow                    |
 
 ### Supported modifiers
 
