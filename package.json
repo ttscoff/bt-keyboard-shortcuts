@@ -1,0 +1,14 @@
+{
+  "name": "bt-keyboard-shortcuts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:js": "vitest run",
+    "test:js:watch": "vitest",
+    "test:all": "composer run test:all"
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0",
+    "vitest": "^1.6.0"
+  }
+}
