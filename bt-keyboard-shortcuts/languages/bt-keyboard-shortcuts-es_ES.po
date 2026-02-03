@@ -1,0 +1,98 @@
+# Spanish (Spain) translation for BT Keyboard Shortcuts
+msgid ""
+msgstr ""
+"Project-Id-Version: BT Keyboard Shortcuts 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ttscoff/bt-keyboard-shortcuts/\n"
+"POT-Creation-Date: 2025-02-03 00:00+0000\n"
+"PO-Revision-Date: 2025-02-03 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Español\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "Keyboard Shortcuts"
+msgstr "Atajos de teclado"
+
+msgid "Display"
+msgstr "Visualización"
+
+msgid "Use + between modifiers and keys"
+msgstr "Usar + entre modificadores y teclas"
+
+msgid "Show + separator (e.g. ⌘+⇧+S)"
+msgstr "Mostrar separador + (ej. ⌘+⇧+S)"
+
+msgid "Use modifier symbols"
+msgstr "Usar símbolos de modificadores"
+
+msgid "Show ⌘⇧⌥⌃ symbols instead of text"
+msgstr "Mostrar símbolos ⌘⇧⌥⌃ en lugar de texto"
+
+msgid "Use key symbols"
+msgstr "Usar símbolos de teclas"
+
+msgid "Show symbol entities for keys (Tab, Return, etc.)"
+msgstr "Mostrar entidades de símbolos para teclas (Tab, Retorno, etc.)"
+
+msgid "Mac / Windows symbols and names"
+msgstr "Símbolos y nombres de Mac / Windows"
+
+msgid "Custom CSS"
+msgstr "CSS personalizado"
+
+msgid "Keyboard key styling"
+msgstr "Estilo de las teclas"
+
+msgid "These options control how keyboard shortcuts are rendered. Shortcode attributes can override them per use."
+msgstr "Estas opciones controlan cómo se muestran los atajos de teclado. Los atributos del shortcode pueden sobrescribirlos en cada uso."
+
+msgid "Override the default styling for .btkbd keyboard keys. Changes update the preview below."
+msgstr "Sobrescribir el estilo por defecto de las teclas .btkbd. Los cambios actualizan la vista previa inferior."
+
+msgid "Mac (⌘ Command, ⌥ Option)"
+msgstr "Mac (⌘ Comando, ⌥ Opción)"
+
+msgid "Windows (⊞ Win, Alt)"
+msgstr "Windows (⊞ Win, Alt)"
+
+msgid "Reset to default"
+msgstr "Restablecer por defecto"
+
+msgid "Preview"
+msgstr "Vista previa"
+
+msgid "Insert keyboard shortcut"
+msgstr "Insertar atajo de teclado"
+
+msgid "Keyboard shortcut"
+msgstr "Atajo de teclado"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Modifiers"
+msgstr "Modificadores"
+
+msgid "Key"
+msgstr "Tecla"
+
+msgid "e.g. s, return, tab"
+msgstr "ej. s, return, tab"
+
+msgid "Generated shortcode"
+msgstr "Shortcode generado"
+
+msgid "Select and copy to paste elsewhere."
+msgstr "Selecciona y copia para pegar en otro lugar."
+
+msgid "Insert"
+msgstr "Insertar"
+
+msgid "Cancel"
+msgstr "Cancelar"

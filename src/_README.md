@@ -67,7 +67,7 @@ Modifier keys are automatically rearranged to match the order recommended by App
 
 On the frontend, the shortcode renders as styled keycaps (e.g. &#x21E7; &#x2318; L and &#x2325; &#x2318; V), using your display and CSS settings.
 
-<!--JEKYLL-->{% img aligncenter /uploads/2026/02/kbd-post.jpg 442 80 "Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V" "Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V" %}<!--END JEKYLL--><!--WP-->![Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V](images/kbd-post@2x.jpg "Rendered shortcuts: Press &#x21E7;&#x2318;L and then &#x2325;&#x2318;V")<!--END WP-->
+<!--JEKYLL-->{% img aligncenter /uploads/2026/02/kbd-post.jpg 442 80 "Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V" %}<!--END JEKYLL--><!--WP-->![Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V](images/kbd-post@2x.jpg "Rendered shortcuts: Press &#x21E7;&#x2318;L and then &#x2325;&#x2318;V")<!--END WP-->
 
 ## License
 

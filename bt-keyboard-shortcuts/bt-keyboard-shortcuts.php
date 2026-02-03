@@ -23,6 +23,10 @@ require_once BTKBD_PATH . 'includes/class-btkbd.php';
 require_once BTKBD_PATH . 'includes/class-btkbd-editor.php';
 require_once BTKBD_PATH . 'includes/class-btkbd-settings.php';
 
+add_action('init', function () {
+	load_plugin_textdomain('bt-keyboard-shortcuts', false, dirname(plugin_basename(__FILE__)) . '/languages');
+});
+
 BTKBD_Kbd::init();
 BTKBD_Editor::init();
 BTKBD_Settings::init();

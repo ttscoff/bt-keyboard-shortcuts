@@ -1,0 +1,126 @@
+# Copyright (C) 2025 BT Keyboard Shortcuts
+# This file is distributed under the same license as the BT Keyboard Shortcuts package.
+msgid ""
+msgstr ""
+"Project-Id-Version: BT Keyboard Shortcuts 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ttscoff/bt-keyboard-shortcuts/\n"
+"POT-Creation-Date: 2025-02-03 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/class-btkbd-settings.php
+msgid "Settings"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Display"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Use + between modifiers and keys"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Show + separator (e.g. ⌘+⇧+S)"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Use modifier symbols"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Show ⌘⇧⌥⌃ symbols instead of text"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Use key symbols"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Show symbol entities for keys (Tab, Return, etc.)"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Mac / Windows symbols and names"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Keyboard key styling"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "These options control how keyboard shortcuts are rendered. Shortcode attributes can override them per use."
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Override the default styling for .btkbd keyboard keys. Changes update the preview below."
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Mac (⌘ Command, ⌥ Option)"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Windows (⊞ Win, Alt)"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Reset to default"
+msgstr ""
+
+#: includes/class-btkbd-settings.php
+msgid "Preview"
+msgstr ""
+
+#: includes/class-btkbd-editor.php src/kbd-format.js
+msgid "Insert keyboard shortcut"
+msgstr ""
+
+#: includes/class-btkbd-editor.php src/kbd-format.js
+msgid "Keyboard shortcut"
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "Close"
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "Modifiers"
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "Key"
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "e.g. s, return, tab"
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "Generated shortcode"
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "Select and copy to paste elsewhere."
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "Insert"
+msgstr ""
+
+#: includes/class-btkbd-editor.php
+msgid "Cancel"
+msgstr ""

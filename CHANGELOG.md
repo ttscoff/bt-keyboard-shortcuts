@@ -6,4 +6,3 @@
 - **New**: Support for modifier aliases (`cmd`, `ctrl`, `opt`, `shift`, `fn`, `hyper`) and symbol shorthand (`$` shift, `@` command/Win, `~` option, `^` control).
 - **New**: Automatic normalization of modifier order to match Apple's Human Interface Guidelines.
 - **New**: Custom CSS support for `.btkbd` key styling with live preview.
-

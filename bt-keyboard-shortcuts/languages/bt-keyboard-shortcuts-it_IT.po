@@ -1,0 +1,98 @@
+# Italian (Italy) translation for BT Keyboard Shortcuts
+msgid ""
+msgstr ""
+"Project-Id-Version: BT Keyboard Shortcuts 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ttscoff/bt-keyboard-shortcuts/\n"
+"POT-Creation-Date: 2025-02-03 00:00+0000\n"
+"PO-Revision-Date: 2025-02-03 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Italiano\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Settings"
+msgstr "Impostazioni"
+
+msgid "Keyboard Shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+msgid "Display"
+msgstr "Visualizzazione"
+
+msgid "Use + between modifiers and keys"
+msgstr "Usa + tra modificatori e tasti"
+
+msgid "Show + separator (e.g. ⌘+⇧+S)"
+msgstr "Mostra separatore + (es. ⌘+⇧+S)"
+
+msgid "Use modifier symbols"
+msgstr "Usa simboli dei modificatori"
+
+msgid "Show ⌘⇧⌥⌃ symbols instead of text"
+msgstr "Mostra simboli ⌘⇧⌥⌃ invece del testo"
+
+msgid "Use key symbols"
+msgstr "Usa simboli dei tasti"
+
+msgid "Show symbol entities for keys (Tab, Return, etc.)"
+msgstr "Mostra entità simbolo per i tasti (Tab, Invio, ecc.)"
+
+msgid "Mac / Windows symbols and names"
+msgstr "Simboli e nomi Mac / Windows"
+
+msgid "Custom CSS"
+msgstr "CSS personalizzato"
+
+msgid "Keyboard key styling"
+msgstr "Stile dei tasti"
+
+msgid "These options control how keyboard shortcuts are rendered. Shortcode attributes can override them per use."
+msgstr "Queste opzioni controllano come vengono mostrate le scorciatoie. Gli attributi dello shortcode possono sovrascriverle per ogni utilizzo."
+
+msgid "Override the default styling for .btkbd keyboard keys. Changes update the preview below."
+msgstr "Sovrascrivi lo stile predefinito per i tasti .btkbd. Le modifiche aggiornano l’anteprima sotto."
+
+msgid "Mac (⌘ Command, ⌥ Option)"
+msgstr "Mac (⌘ Comando, ⌥ Opzione)"
+
+msgid "Windows (⊞ Win, Alt)"
+msgstr "Windows (⊞ Win, Alt)"
+
+msgid "Reset to default"
+msgstr "Ripristina predefiniti"
+
+msgid "Preview"
+msgstr "Anteprima"
+
+msgid "Insert keyboard shortcut"
+msgstr "Inserisci scorciatoia da tastiera"
+
+msgid "Keyboard shortcut"
+msgstr "Scorciatoia da tastiera"
+
+msgid "Close"
+msgstr "Chiudi"
+
+msgid "Modifiers"
+msgstr "Modificatori"
+
+msgid "Key"
+msgstr "Tasto"
+
+msgid "e.g. s, return, tab"
+msgstr "es. s, return, tab"
+
+msgid "Generated shortcode"
+msgstr "Shortcode generato"
+
+msgid "Select and copy to paste elsewhere."
+msgstr "Seleziona e copia per incollare altrove."
+
+msgid "Insert"
+msgstr "Inserisci"
+
+msgid "Cancel"
+msgstr "Annulla"

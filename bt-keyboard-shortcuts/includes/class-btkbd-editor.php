@@ -65,6 +65,7 @@ class BTKBD_Editor
 			BTKBD_VERSION,
 			true
 		);
+		wp_set_script_translations('btkbd-format', 'bt-keyboard-shortcuts', BTKBD_PATH . 'languages');
 	}
 
 	/**
