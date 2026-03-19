@@ -2,7 +2,7 @@
 /**
  * Kbd shortcode: Apple-style keyboard shortcut markup (replicates Jekyll kbd_tag.rb).
  *
- * [kbd cmd shift p] -> <span class="keycombo"><kbd class="mod symbol">&#8984;</kbd><kbd class="key symbol">P</kbd></span>
+ * [btkbd cmd shift p] -> <span class="keycombo"><kbd class="mod symbol">&#8984;</kbd><kbd class="key symbol">P</kbd></span>
  * Supports: cmd/command, ctrl/control, opt/alt, shift, fn, hyper; key names (tab, return, esc, etc.); multiple combos separated by /
  *
  * Options: plus, text, mod_text, key_text (or use_plus=1, symbols=0, etc.)
@@ -34,7 +34,6 @@ class BTKBD_Kbd
 	 */
 	public static function init()
 	{
-		add_shortcode('kbd', array(__CLASS__, 'shortcode'));
 		add_shortcode('btkbd', array(__CLASS__, 'shortcode'));
 		add_action('wp_enqueue_scripts', array(__CLASS__, 'register_styles'));
 	}
@@ -70,7 +69,8 @@ class BTKBD_Kbd
 		if ($custom_css !== '') {
 			wp_register_style('btkbd-frontend-custom', false, array('btkbd-frontend'), BTKBD_VERSION);
 			wp_enqueue_style('btkbd-frontend-custom');
-			wp_add_inline_style('btkbd-frontend-custom', $custom_css);
+			// Escape late: the option is injected into a <style> tag.
+			wp_add_inline_style('btkbd-frontend-custom', esc_html($custom_css));
 		}
 	}
 

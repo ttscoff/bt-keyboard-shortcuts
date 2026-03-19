@@ -27,15 +27,6 @@ class BTKBD_Settings
 		add_action('admin_init', array(__CLASS__, 'register_settings'));
 		add_filter('plugin_action_links_' . plugin_basename(BTKBD_PATH . 'bt-keyboard-shortcuts.php'), array(__CLASS__, 'plugin_action_links'));
 		add_action('admin_enqueue_scripts', array(__CLASS__, 'enqueue_settings_assets'));
-		add_action('admin_head-settings_page_bt-keyboard-shortcuts', array(__CLASS__, 'preview_styles'));
-	}
-
-	/**
-	 * Inline styles for custom CSS preview on settings page.
-	 */
-	public static function preview_styles()
-	{
-		echo '<style>.btkbd-css-preview-wrap{margin-top:8px;padding:16px;background:#f0f0f1;border:1px solid #c3c4c7;border-radius:4px;}.btkbd-css-preview-sample{line-height:1.8;}</style>';
 	}
 
 	/**
@@ -265,7 +256,6 @@ class BTKBD_Settings
 		$name = self::OPTION_NAME . '[custom_css]';
 		$id = 'btkbd-custom-css';
 		$preview_id = 'btkbd-css-preview';
-		$default_css = self::get_default_css();
 		?>
 		<div class="btkbd-css-wrap">
 			<textarea name="<?php echo esc_attr($name); ?>" id="<?php echo esc_attr($id); ?>" class="large-text code"
@@ -276,36 +266,11 @@ class BTKBD_Settings
 			</p>
 			<p><strong><?php esc_html_e('Preview', 'bt-keyboard-shortcuts'); ?></strong></p>
 			<div id="<?php echo esc_attr($preview_id); ?>" class="btkbd-css-preview-wrap">
-				<style id="btkbd-preview-style" type="text/css"></style>
 				<div class="btkbd-css-preview-sample">
 					<?php echo wp_kses_post(BTKBD_Kbd::render_sample_for_preview()); ?>
 				</div>
 			</div>
 		</div>
-		<script>
-			(function () {
-				var textarea = document.getElementById('<?php echo esc_js($id); ?>');
-				var styleEl = document.getElementById('btkbd-preview-style');
-				var defaultCss = <?php echo json_encode($default_css); ?>;
-
-				function updatePreview() {
-					if (styleEl) styleEl.textContent = textarea ? textarea.value : '';
-				}
-				if (textarea) {
-					textarea.addEventListener('input', updatePreview);
-					textarea.addEventListener('change', updatePreview);
-				}
-				updatePreview();
-
-				var resetBtn = document.getElementById('btkbd-css-reset');
-				if (resetBtn && textarea) {
-					resetBtn.addEventListener('click', function () {
-						textarea.value = defaultCss;
-						updatePreview();
-					});
-				}
-			})();
-		</script>
 		<?php
 	}
 
@@ -319,7 +284,42 @@ class BTKBD_Settings
 		if ($hook !== 'settings_page_bt-keyboard-shortcuts') {
 			return;
 		}
-		// No extra CSS/JS needed; inline script in field_custom_css.
+		// Inline styles + JS needed for custom CSS preview/reset on settings page.
+		$inline_css = '.btkbd-css-preview-wrap{margin-top:8px;padding:16px;background:#f0f0f1;border:1px solid #c3c4c7;border-radius:4px;}.btkbd-css-preview-sample{line-height:1.8;}';
+
+		wp_register_style(
+			'btkbd-settings-preview',
+			false,
+			array(),
+			BTKBD_VERSION
+		);
+		wp_enqueue_style('btkbd-settings-preview');
+		wp_add_inline_style('btkbd-settings-preview', $inline_css);
+
+		$default_css = self::get_default_css();
+		wp_register_script(
+			'btkbd-settings-custom-css',
+			false,
+			array(),
+			BTKBD_VERSION,
+			true
+		);
+		wp_enqueue_script('btkbd-settings-custom-css');
+		wp_add_inline_script(
+			'btkbd-settings-custom-css',
+			'(function () {' .
+			'var textarea = document.getElementById("btkbd-custom-css");' .
+			'var previewWrap = document.getElementById("btkbd-css-preview");' .
+			'var styleEl = document.getElementById("btkbd-preview-style");' .
+			'if (!styleEl && previewWrap) { styleEl = document.createElement("style"); styleEl.id = "btkbd-preview-style"; styleEl.type = "text/css"; previewWrap.appendChild(styleEl); }' .
+			'var defaultCss = ' . wp_json_encode($default_css) . ';' .
+			'function updatePreview() { if (styleEl) styleEl.textContent = textarea ? textarea.value : ""; }' .
+			'if (textarea) { textarea.addEventListener("input", updatePreview); textarea.addEventListener("change", updatePreview); }' .
+			'updatePreview();' .
+			'var resetBtn = document.getElementById("btkbd-css-reset");' .
+			'if (resetBtn && textarea) { resetBtn.addEventListener("click", function () { textarea.value = defaultCss; updatePreview(); }); }' .
+			'})();'
+		);
 	}
 
 	/**

@@ -17,8 +17,8 @@
   }
 
   function toShortcodeString(content) {
-    if (!content || !content.trim()) return "[kbd]";
-    return "[kbd " + content.trim() + "]";
+    if (!content || !content.trim()) return "[btkbd]";
+    return "[btkbd " + content.trim() + "]";
   }
 
   var modal = null;
@@ -88,7 +88,7 @@
       if (checkboxes[m]) checkboxes[m].checked = false;
     });
     if (keyInput) keyInput.value = "";
-    if (shortcodeInput) shortcodeInput.value = "[kbd]";
+    if (shortcodeInput) shortcodeInput.value = "[btkbd]";
     modal.style.display = "";
     modal.setAttribute("aria-hidden", "false");
     if (keyInput) keyInput.focus();

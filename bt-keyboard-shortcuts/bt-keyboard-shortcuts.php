@@ -2,7 +2,7 @@
 /**
  * Plugin Name: BT Keyboard Shortcuts
  * Plugin URI: https://github.com/ttscoff/bt-keyboard-shortcuts/
- * Description: Apple-style keyboard shortcut markup. Shortcode [kbd] for ⌘⇧P-style output.
+ * Description: Apple-style keyboard shortcut markup. Shortcode [btkbd] for ⌘⇧P-style output.
  * Version: 1.0.0
  * Author: Brett Terpstra
  * Author URI: https://brettterpstra.com
@@ -22,10 +22,6 @@ define('BTKBD_OPTION_NAME', 'btkbd_options');
 require_once BTKBD_PATH . 'includes/class-btkbd.php';
 require_once BTKBD_PATH . 'includes/class-btkbd-editor.php';
 require_once BTKBD_PATH . 'includes/class-btkbd-settings.php';
-
-add_action('init', function () {
-	load_plugin_textdomain('bt-keyboard-shortcuts', false, dirname(plugin_basename(__FILE__)) . '/languages');
-});
 
 BTKBD_Kbd::init();
 BTKBD_Editor::init();

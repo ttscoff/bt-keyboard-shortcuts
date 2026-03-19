@@ -137,7 +137,7 @@ class BTKBD_Editor
 						<label
 							for="btkbd-picker-shortcode"><?php esc_html_e('Generated shortcode', 'bt-keyboard-shortcuts'); ?></label>
 						<input type="text" id="btkbd-picker-shortcode" class="btkbd-picker-input btkbd-picker-shortcode"
-							placeholder="[kbd]" readonly>
+							placeholder="[btkbd]" readonly>
 						<p class="btkbd-picker-help">
 							<?php esc_html_e('Select and copy to paste elsewhere.', 'bt-keyboard-shortcuts'); ?>
 						</p>

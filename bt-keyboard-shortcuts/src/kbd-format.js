@@ -1,6 +1,6 @@
 /**
  * Block editor format: Keyboard shortcut. Adds ⌘ button to format toolbar dropdown.
- * When clicked, opens the picker modal; on Insert, inserts [kbd]...[/kbd] at cursor.
+ * When clicked, opens the picker modal; on Insert, inserts [btkbd ...] at cursor.
  */
 (function (richText, blockEditor, element, i18n) {
   "use strict";
