@@ -1,11 +1,11 @@
 # BT Keyboard Shortcuts
 
-Apple-style keyboard shortcut markup for WordPress. Use the `[kbd]` shortcode to render shortcuts like &#x2318;&#x21E7;P or Command-Shift-P in posts and pages.
+Apple-style keyboard shortcut markup for WordPress. Use the `[btkbd]` shortcode to render shortcuts like &#x2318;&#x21E7;P or Command-Shift-P in posts and pages.
 <!--README-->**Requires:** WordPress 5.8+, PHP 7.4+
 
 ## Features
 
-- **Shortcode `[kbd]`** for &#x2318;&#x21E7;&#x2325;&#x2303;-style output anywhere shortcodes are supported
+- **Shortcode `[btkbd]`** for &#x2318;&#x21E7;&#x2325;&#x2303;-style output anywhere shortcodes are supported
 - **Symbols or text**: Mac/Windows modifier symbols (&#x2318;, &#x21E7;, &#x2325;, &#x2303;) or text labels (Command, Shift, Option, Control)
 - **Automatically sort** modifiers in the order specified by Apple's guidelines
 - **Editor integration**: Insert keyboard shortcut dialog in the classic and block editors
@@ -46,16 +46,16 @@ Under **Settings &rarr; Keyboard Shortcuts** (or via the plugin's **Settings** l
 
 | Syntax           | Example                  | Output                                |
 | ---------------- | ------------------------ | ------------------------------------- |
-| Modifiers + key  | `[kbd cmd shift p]`      | &#x2318;&#x21E7;P (symbols, combined) |
-| Text labels      | `[kbd cmd shift p text]` | Shift-Command-P                       |
-| Shortcut symbols | `[kbd @$P]`              | Shift-Command-P                       |
-| Arrow keys       | `[kbd right]`            | &rarr; Right Arrow                    |
+| Modifiers + key  | `[btkbd cmd shift p]`      | &#x2318;&#x21E7;P (symbols, combined) |
+| Text labels      | `[btkbd cmd shift p text]` | Shift-Command-P                       |
+| Shortcut symbols | `[btkbd @$P]`              | Shift-Command-P                       |
+| Arrow keys       | `[btkbd right]`            | &rarr; Right Arrow                    |
 
 ### Supported modifiers
 
 `cmd`/`command`, `ctrl`/`control`, `opt`/`alt`, `shift`, `fn`, `hyper`
 
-You can also use symbol shorthand in the shortcode: `$` (Shift), `@` (Command/Win), `~` (Option), `^` (CTRL). For example, `[kbd @$p]` renders as &#x21E7;&#x2318;P.
+You can also use symbol shorthand in the shortcode: `$` (Shift), `@` (Command/Win), `~` (Option), `^` (CTRL). For example, `[btkbd @$p]` renders as &#x21E7;&#x2318;P.
 
 Modifier keys are automatically rearranged to match the order recommended by Apple in their [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/keyboard-shortcuts) (e.g. &#x2303; &#x2325; &#x21E7; &#x2318; before the key), regardless of the order you type them.
 

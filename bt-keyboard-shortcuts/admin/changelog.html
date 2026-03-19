@@ -1,0 +1,35 @@
+<h3 id="100">1.0.0</h3>
+<p>2026-03-19 10:24</p>
+<h4 id="changed">CHANGED</h4>
+<ul>
+<li>Replace the generic [kbd] shortcode with prefixed [btkbd] only.</li>
+<li>Enqueue settings-page preview CSS and JS with WordPress wp_register/wp_enqueue/wp_add_inline APIs instead of printing raw inline tags.</li>
+<li>Load plugin translations from languages/ via load_plugin_textdomain so Settings and admin UI follow the site language in BT Keyboard Shortcuts and BT Downloads</li>
+<li>Add language files for BT Keyboard Shortcuts: .pot template plus en_US, de_DE, es_ES, fr_FR, it_IT (.po and compiled .mo) for settings page and Insert keyboard shortcut dialog</li>
+<li>Add language files for BT Downloads: .pot template plus en_US, de_DE, es_ES, fr_FR, it_IT (.po and compiled .mo) for Downloads CPT, edit screen, card template page, and Insert download UI</li>
+<li>PHP unit tests for [kbd]/[btkbd] shortcode (registration, modifier symbols, text/plus options, Windows style, key names, multiple combos, mod_text, empty/symbol shorthand).</li>
+<li>Vitest-based JS test setup with placeholder test and jsdom environment.</li>
+<li>Composer dev deps (PHPUnit, WP PHPUnit, yoast/phpunit-polyfills, PHPCS, WPCS) and scripts: test:php, lint:phpcs, test:all.</li>
+<li>Npm scripts test:js, test🇪🇸watch, test:all; devDependencies jsdom and vitest.</li>
+<li>Bin/install-wp-tests.sh for WordPress PHPUnit test environment (DB, WP core, test lib).</li>
+<li>PHPUnit config (phpunit.xml.dist), bootstrap (tests/bootstrap.php), optional wp-tests-env.php for WP_CORE_DIR/WP_TESTS_DIR.</li>
+<li>Block editor format/toolbar and block JS strings (e.g. “Insert keyboard shortcut”, “Insert download”, “Select a download…”) now use wp_set_script_translations so they are translated when the site language is not English</li>
+<li>Update the shortcode picker UI and generated snippets to use [btkbd] consistently in Classic and Block editor flows.</li>
+<li>Encode default CSS for admin-side JavaScript with wp_json_encode to prevent unsafe script embedding sequences.</li>
+<li>Escape saved custom CSS at output before passing it to wp_add_inline_style for frontend rendering.</li>
+<li><strong>New</strong>: <code>[kbd]</code> shortcode for rendering Apple-style keyboard shortcuts (⌘, ⇧, ⌥, ⌃) or text labels (Command, Shift, Option, Control).</li>
+<li><strong>New</strong>: Editor integration with an “Insert keyboard shortcut” dialog in the classic and block editors.</li>
+<li><strong>New</strong>: Settings page to configure + separators, symbol vs text output, key symbols, and Mac vs Windows naming.</li>
+<li><strong>New</strong>: Support for modifier aliases (<code>cmd</code>, <code>ctrl</code>, <code>opt</code>, <code>shift</code>, <code>fn</code>, <code>hyper</code>) and symbol shorthand (<code>$</code> shift, <code>@</code> command/Win, <code>~</code> option, <code>^</code> control).</li>
+<li><strong>New</strong>: Automatic normalization of modifier order to match Apple’s Human Interface Guidelines.</li>
+<li><strong>New</strong>: Custom CSS support for <code>.btkbd</code> key styling with live preview.</li>
+</ul>
+<h2 id="100-initial-release">1.0.0 — Initial release</h2>
+<ul>
+<li><strong>New</strong>: <code>[kbd]</code> shortcode for rendering Apple-style keyboard shortcuts (⌘, ⇧, ⌥, ⌃) or text labels (Command, Shift, Option, Control).</li>
+<li><strong>New</strong>: Editor integration with an “Insert keyboard shortcut” dialog in the classic and block editors.</li>
+<li><strong>New</strong>: Settings page to configure + separators, symbol vs text output, key symbols, and Mac vs Windows naming.</li>
+<li><strong>New</strong>: Support for modifier aliases (<code>cmd</code>, <code>ctrl</code>, <code>opt</code>, <code>shift</code>, <code>fn</code>, <code>hyper</code>) and symbol shorthand (<code>$</code> shift, <code>@</code> command/Win, <code>~</code> option, <code>^</code> control).</li>
+<li><strong>New</strong>: Automatic normalization of modifier order to match Apple’s Human Interface Guidelines.</li>
+<li><strong>New</strong>: Custom CSS support for <code>.btkbd</code> key styling with live preview.</li>
+</ul>
