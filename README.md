@@ -16,19 +16,19 @@
 3. Activate the plugin via **Plugins** in WordPress.
 4. Go to **Settings** (under the plugin on the Plugins page) to configure display and CSS.
 
-
+{% img aligncenter /uploads/2026/02/kbd-settings-link.jpg 920 93 "Plugins page: BT Keyboard Shortcuts with Settings link" "Plugins page: BT Keyboard Shortcuts with Settings link" %}
 ![Plugins page: BT Keyboard Shortcuts with Settings link](images/kbd-settings-link@2x.jpg "BT Keyboard Shortcuts plugin with Settings link highlighted")
 
 ## Inserting shortcuts in the editor
 
 In the block or classic editor, use the formatting dropdown and choose **Insert keyboard shortcut** to open the shortcut dialog.
 
-
+{% img aligncenter /uploads/2026/02/kbd-insert.jpg 604 303 "Editor dropdown with Insert keyboard shortcut option" "Editor dropdown with Insert keyboard shortcut option" %}
 ![Editor dropdown with Insert keyboard shortcut option](images/kbd-insert@2x.jpg "Editor formatting menu with Insert keyboard shortcut option")
 
 In the **Keyboard shortcut** dialog, check modifier keys (Win/Alt/Shift/Ctrl/Fn), enter the main key, and use the generated shortcode. Click **Insert** to add it to the content.
 
-![Keyboard shortcut dialog with modifiers and generated shortcode](images/kbd-shortcut-editor@2x.jpg "Keyboard shortcut dialog with modifiers, key field, and generated shortcode")
+{% img aligncenter /uploads/2026/02/kbd-shortcut-editor.jpg 409 407 "Keyboard shortcut dialog with modifiers and generated shortcode" "Keyboard shortcut dialog with modifiers and generated shortcode" %}![Keyboard shortcut dialog with modifiers and generated shortcode](images/kbd-shortcut-editor@2x.jpg "Keyboard shortcut dialog with modifiers, key field, and generated shortcode")
 
 ## Settings
 
@@ -37,7 +37,7 @@ Under **Settings &rarr; Keyboard Shortcuts** (or via the plugin's **Settings** l
 - **Display**: Show + separator (e.g. &#x2318;+&#x2325;+S), use modifier symbols (&#x2318;&#x21E7;&#x2325;&#x2303;) vs text, use symbol entities for keys (Tab, Return, etc.), and choose **Mac** or **Windows** symbols and names.
 - **Custom CSS**: Override default styling for `.btkbd` keyboard keys. Changes update the preview below.
 
-![Keyboard Shortcuts settings: Display options and Custom CSS with preview](images/kbd-settings-800@2x.jpg "Settings page with Display options and Custom CSS with live preview")
+{% img aligncenter /uploads/2026/02/kbd-settings-800.jpg 721 800 "Keyboard Shortcuts settings: Display options and Custom CSS with preview" "Keyboard Shortcuts settings: Display options and Custom CSS with preview" %}![Keyboard Shortcuts settings: Display options and Custom CSS with preview](images/kbd-settings-800@2x.jpg "Settings page with Display options and Custom CSS with live preview")
 
 ## Shortcode syntax
 
@@ -64,7 +64,7 @@ Modifier keys are automatically rearranged to match the order recommended by App
 
 On the frontend, the shortcode renders as styled keycaps (e.g. &#x21E7; &#x2318; L and &#x2325; &#x2318; V), using your display and CSS settings.
 
-![Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V](images/kbd-post@2x.jpg "Rendered shortcuts: Press &#x21E7;&#x2318;L and then &#x2325;&#x2318;V")
+{% img aligncenter /uploads/2026/02/kbd-post.jpg 442 80 "Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V" %}![Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V](images/kbd-post@2x.jpg "Rendered shortcuts: Press &#x21E7;&#x2318;L and then &#x2325;&#x2318;V")
 
 ## License
 
