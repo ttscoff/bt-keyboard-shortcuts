@@ -43,10 +43,10 @@ Under **Settings &rarr; Keyboard Shortcuts** (or via the plugin's **Settings** l
 
 | Syntax           | Example                  | Output                                |
 | ---------------- | ------------------------ | ------------------------------------- |
-| Modifiers + key  | `[btkbd cmd shift p]`    | &#x2318;&#x21E7;P (symbols, combined) |
-| Text labels      | `[btkbd cmd shift p text]` | Shift-Command-P                     |
-| Shortcut symbols | `[btkbd @$P]`            | Shift-Command-P                       |
-| Arrow keys       | `[btkbd right]`          | &rarr; Right Arrow                    |
+| Modifiers + key  | `[btkbd cmd shift p]`      | &#x2318;&#x21E7;P (symbols, combined) |
+| Text labels      | `[btkbd cmd shift p text]` | Shift-Command-P                       |
+| Shortcut symbols | `[btkbd @$P]`              | Shift-Command-P                       |
+| Arrow keys       | `[btkbd right]`            | &rarr; Right Arrow                    |
 
 ### Supported modifiers
 
