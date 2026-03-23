@@ -11,10 +11,11 @@
 
 ## Installation
 
-1. Download the [latest release](https://github.com/ttscoff/bt-keyboard-shortcuts/releases/latest/download/bt-keyboard-shortcuts.zip) and unzip.
-2. Upload the `bt-keyboard-shortcuts` folder to `/wp-content/plugins/`.
-3. Activate the plugin via **Plugins** in WordPress.
-4. Go to **Settings** (under the plugin on the Plugins page) to configure display options.
+1. In WordPress admin, go to **Plugins > Add New**, search for **BT Keyboard Shortcuts**, and install from the Plugin Directory listing: [BT Keyboard Shortcuts on WordPress.org](https://wordpress.org/plugins/bt-keyboard-shortcuts/).
+2. Or download the [latest release](https://github.com/ttscoff/bt-keyboard-shortcuts/releases/latest/download/bt-keyboard-shortcuts.zip) and unzip.
+3. Upload the `bt-keyboard-shortcuts` folder to `/wp-content/plugins/`.
+4. Activate the plugin via **Plugins** in WordPress.
+5. Go to **Settings** (under the plugin on the Plugins page) to configure display options.
 
 {% img aligncenter /uploads/2026/02/kbd-settings-link.jpg 920 93 "Plugins page: BT Keyboard Shortcuts with Settings link" "Plugins page: BT Keyboard Shortcuts with Settings link" %}
 ![Plugins page: BT Keyboard Shortcuts with Settings link](images/kbd-settings-link@2x.jpg "BT Keyboard Shortcuts plugin with Settings link highlighted")
