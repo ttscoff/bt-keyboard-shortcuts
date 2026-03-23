@@ -189,6 +189,30 @@ class BT_Keyboard_Shortcuts_Plugin_Tests extends WP_UnitTestCase
 	}
 
 	/**
+	 * Shortcode preset attribute enqueues preset style handle.
+	 */
+	public function test_shortcode_preset_enqueues_preset_style()
+	{
+		wp_dequeue_style('btkbd-frontend-preset');
+		wp_deregister_style('btkbd-frontend-preset');
+		do_shortcode('[btkbd cmd p preset="dark"]');
+		do_action('wp_enqueue_scripts');
+		$this->assertTrue(wp_style_is('btkbd-frontend-preset', 'enqueued'));
+	}
+
+	/**
+	 * Invalid preset attribute does not enqueue preset style handle.
+	 */
+	public function test_shortcode_invalid_preset_falls_back_to_default()
+	{
+		wp_dequeue_style('btkbd-frontend-preset');
+		wp_deregister_style('btkbd-frontend-preset');
+		do_shortcode('[btkbd cmd p preset="not-a-preset"]');
+		do_action('wp_enqueue_scripts');
+		$this->assertFalse(wp_style_is('btkbd-frontend-preset', 'enqueued'));
+	}
+
+	/**
 	 * Ctrl/control modifier renders.
 	 */
 	public function test_ctrl_modifier()

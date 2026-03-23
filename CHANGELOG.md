@@ -19,12 +19,13 @@
 - Update the shortcode picker UI and generated snippets to use [btkbd] consistently in Classic and Block editor flows.
 - Encode default CSS for admin-side JavaScript with wp_json_encode to prevent unsafe script embedding sequences.
 - Escape saved custom CSS at output before passing it to wp_add_inline_style for frontend rendering.
+- Remove plugin-managed arbitrary Custom CSS textarea and inline CSS injection; direct users to WordPress core Additional CSS for styling `.btkbd`.
 - **New**: `[kbd]` shortcode for rendering Apple-style keyboard shortcuts (&#x2318;, &#x21E7;, &#x2325;, &#x2303;) or text labels (Command, Shift, Option, Control).
 - **New**: Editor integration with an "Insert keyboard shortcut" dialog in the classic and block editors.
 - **New**: Settings page to configure + separators, symbol vs text output, key symbols, and Mac vs Windows naming.
 - **New**: Support for modifier aliases (`cmd`, `ctrl`, `opt`, `shift`, `fn`, `hyper`) and symbol shorthand (`$` shift, `@` command/Win, `~` option, `^` control).
 - **New**: Automatic normalization of modifier order to match Apple's Human Interface Guidelines.
-- **New**: Custom CSS support for `.btkbd` key styling with live preview.
+- **Removed**: Plugin-managed Custom CSS textarea/live preview to comply with WordPress.org policy; use core Additional CSS instead.
 
 ## 1.0.0 --- Initial release
 
@@ -33,4 +34,4 @@
 - **New**: Settings page to configure + separators, symbol vs text output, key symbols, and Mac vs Windows naming.
 - **New**: Support for modifier aliases (`cmd`, `ctrl`, `opt`, `shift`, `fn`, `hyper`) and symbol shorthand (`$` shift, `@` command/Win, `~` option, `^` control).
 - **New**: Automatic normalization of modifier order to match Apple's Human Interface Guidelines.
-- **New**: Custom CSS support for `.btkbd` key styling with live preview.
+- **Removed**: Plugin-managed Custom CSS textarea/live preview to comply with WordPress.org policy; use core Additional CSS instead.

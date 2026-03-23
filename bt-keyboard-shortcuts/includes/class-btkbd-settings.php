@@ -26,7 +26,6 @@ class BTKBD_Settings
 		add_action('admin_menu', array(__CLASS__, 'add_menu'));
 		add_action('admin_init', array(__CLASS__, 'register_settings'));
 		add_filter('plugin_action_links_' . plugin_basename(BTKBD_PATH . 'bt-keyboard-shortcuts.php'), array(__CLASS__, 'plugin_action_links'));
-		add_action('admin_enqueue_scripts', array(__CLASS__, 'enqueue_settings_assets'));
 	}
 
 	/**
@@ -112,19 +111,12 @@ class BTKBD_Settings
 			'btkbd_display'
 		);
 
-		add_settings_section(
-			'btkbd_css',
-			__('Custom CSS', 'bt-keyboard-shortcuts'),
-			array(__CLASS__, 'section_css'),
-			'bt-keyboard-shortcuts'
-		);
-
 		add_settings_field(
-			'btkbd_custom_css',
-			__('Keyboard key styling', 'bt-keyboard-shortcuts'),
-			array(__CLASS__, 'field_custom_css'),
+			'btkbd_style_preset',
+			__('Keyboard key style preset', 'bt-keyboard-shortcuts'),
+			array(__CLASS__, 'field_style_preset'),
 			'bt-keyboard-shortcuts',
-			'btkbd_css'
+			'btkbd_display'
 		);
 	}
 
@@ -140,22 +132,8 @@ class BTKBD_Settings
 			'use_modifier_symbols' => true,
 			'use_key_symbols' => true,
 			'style' => 'mac',
-			'custom_css' => self::get_default_css(),
+			'style_preset' => 'default',
 		);
-	}
-
-	/**
-	 * Default CSS content (from frontend stylesheet).
-	 *
-	 * @return string
-	 */
-	public static function get_default_css()
-	{
-		$file = BTKBD_PATH . 'assets/kbd-frontend.css';
-		if (is_readable($file)) {
-			return (string) file_get_contents($file);
-		}
-		return '';
 	}
 
 	/**
@@ -179,7 +157,6 @@ class BTKBD_Settings
 	 */
 	public static function sanitize_options($input)
 	{
-		$defaults = self::get_defaults();
 		$input   = is_array($input) ? $input : array();
 		$out     = array();
 
@@ -188,7 +165,7 @@ class BTKBD_Settings
 		$out['use_modifier_symbols'] = isset($input['use_modifier_symbols']) && $input['use_modifier_symbols'];
 		$out['use_key_symbols']     = isset($input['use_key_symbols']) && $input['use_key_symbols'];
 		$out['style']               = isset($input['style']) && $input['style'] === 'windows' ? 'windows' : 'mac';
-		$out['custom_css']          = isset($input['custom_css']) ? wp_strip_all_tags($input['custom_css']) : $defaults['custom_css'];
+		$out['style_preset']        = self::sanitize_style_preset(isset($input['style_preset']) ? $input['style_preset'] : 'default');
 
 		return $out;
 	}
@@ -199,14 +176,6 @@ class BTKBD_Settings
 	public static function section_display()
 	{
 		echo '<p class="description">' . esc_html__('These options control how keyboard shortcuts are rendered. Shortcode attributes can override them per use.', 'bt-keyboard-shortcuts') . '</p>';
-	}
-
-	/**
-	 * Section Custom CSS description.
-	 */
-	public static function section_css()
-	{
-		echo '<p class="description">' . esc_html__('Override the default styling for .btkbd keyboard keys. Changes update the preview below.', 'bt-keyboard-shortcuts') . '</p>';
 	}
 
 	/**
@@ -247,79 +216,37 @@ class BTKBD_Settings
 	}
 
 	/**
-	 * Custom CSS field: textarea + preview + reset.
+	 * Style preset field.
 	 */
-	public static function field_custom_css()
+	public static function field_style_preset()
 	{
 		$opts = self::get_options();
-		$css = isset($opts['custom_css']) ? $opts['custom_css'] : self::get_default_css();
-		$name = self::OPTION_NAME . '[custom_css]';
-		$id = 'btkbd-custom-css';
-		$preview_id = 'btkbd-css-preview';
+		$val = isset($opts['style_preset']) ? self::sanitize_style_preset($opts['style_preset']) : 'default';
+		$name = self::OPTION_NAME . '[style_preset]';
 		?>
-		<div class="btkbd-css-wrap">
-			<textarea name="<?php echo esc_attr($name); ?>" id="<?php echo esc_attr($id); ?>" class="large-text code"
-				rows="16"><?php echo esc_textarea($css); ?></textarea>
-			<p>
-				<button type="button" class="button"
-					id="btkbd-css-reset"><?php esc_html_e('Reset to default', 'bt-keyboard-shortcuts'); ?></button>
-			</p>
-			<p><strong><?php esc_html_e('Preview', 'bt-keyboard-shortcuts'); ?></strong></p>
-			<div id="<?php echo esc_attr($preview_id); ?>" class="btkbd-css-preview-wrap">
-				<div class="btkbd-css-preview-sample">
-					<?php echo wp_kses_post(BTKBD_Kbd::render_sample_for_preview()); ?>
-				</div>
-			</div>
-		</div>
+		<select name="<?php echo esc_attr($name); ?>" id="btkbd-style-preset">
+			<option value="default" <?php selected($val, 'default'); ?>><?php esc_html_e('Default', 'bt-keyboard-shortcuts'); ?></option>
+			<option value="light" <?php selected($val, 'light'); ?>><?php esc_html_e('Light', 'bt-keyboard-shortcuts'); ?></option>
+			<option value="dark" <?php selected($val, 'dark'); ?>><?php esc_html_e('Dark', 'bt-keyboard-shortcuts'); ?></option>
+			<option value="modern" <?php selected($val, 'modern'); ?>><?php esc_html_e('Modern', 'bt-keyboard-shortcuts'); ?></option>
+		</select>
+		<p class="description">
+			<?php esc_html_e('Choose a built-in keycap style. Advanced customization can still be done in Appearance > Customize > Additional CSS.', 'bt-keyboard-shortcuts'); ?>
+		</p>
 		<?php
 	}
 
 	/**
-	 * Enqueue assets on settings page.
+	 * Sanitize preset slug.
 	 *
-	 * @param string $hook Admin hook.
+	 * @param string $preset Preset slug.
+	 * @return string
 	 */
-	public static function enqueue_settings_assets($hook)
+	private static function sanitize_style_preset($preset)
 	{
-		if ($hook !== 'settings_page_bt-keyboard-shortcuts') {
-			return;
-		}
-		// Inline styles + JS needed for custom CSS preview/reset on settings page.
-		$inline_css = '.btkbd-css-preview-wrap{margin-top:8px;padding:16px;background:#f0f0f1;border:1px solid #c3c4c7;border-radius:4px;}.btkbd-css-preview-sample{line-height:1.8;}';
-
-		wp_register_style(
-			'btkbd-settings-preview',
-			false,
-			array(),
-			BTKBD_VERSION
-		);
-		wp_enqueue_style('btkbd-settings-preview');
-		wp_add_inline_style('btkbd-settings-preview', $inline_css);
-
-		$default_css = self::get_default_css();
-		wp_register_script(
-			'btkbd-settings-custom-css',
-			false,
-			array(),
-			BTKBD_VERSION,
-			true
-		);
-		wp_enqueue_script('btkbd-settings-custom-css');
-		wp_add_inline_script(
-			'btkbd-settings-custom-css',
-			'(function () {' .
-			'var textarea = document.getElementById("btkbd-custom-css");' .
-			'var previewWrap = document.getElementById("btkbd-css-preview");' .
-			'var styleEl = document.getElementById("btkbd-preview-style");' .
-			'if (!styleEl && previewWrap) { styleEl = document.createElement("style"); styleEl.id = "btkbd-preview-style"; styleEl.type = "text/css"; previewWrap.appendChild(styleEl); }' .
-			'var defaultCss = ' . wp_json_encode($default_css) . ';' .
-			'function updatePreview() { if (styleEl) styleEl.textContent = textarea ? textarea.value : ""; }' .
-			'if (textarea) { textarea.addEventListener("input", updatePreview); textarea.addEventListener("change", updatePreview); }' .
-			'updatePreview();' .
-			'var resetBtn = document.getElementById("btkbd-css-reset");' .
-			'if (resetBtn && textarea) { resetBtn.addEventListener("click", function () { textarea.value = defaultCss; updatePreview(); }); }' .
-			'})();'
-		);
+		$allowed = array('default', 'light', 'dark', 'modern');
+		$preset = is_string($preset) ? strtolower($preset) : 'default';
+		return in_array($preset, $allowed, true) ? $preset : 'default';
 	}
 
 	/**
@@ -333,6 +260,11 @@ class BTKBD_Settings
 		?>
 		<div class="wrap">
 			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+			<div class="notice notice-info inline">
+				<p>
+					<?php esc_html_e('To customize BT Keyboard Shortcuts styles, use Appearance > Customize > Additional CSS (or the Site Editor equivalent for block themes) and target the .btkbd classes.', 'bt-keyboard-shortcuts'); ?>
+				</p>
+			</div>
 			<form action="options.php" method="post">
 				<?php
 				settings_fields(self::OPTION_GROUP);

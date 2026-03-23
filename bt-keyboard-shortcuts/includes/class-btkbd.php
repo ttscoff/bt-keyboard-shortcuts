@@ -27,7 +27,7 @@ class BTKBD_Kbd
 	private static $mod_to_title = array('⌃' => 'Control', '⌥' => 'Option', '⇧' => 'Shift', '⌘' => 'Command', 'Fn' => 'Function', 'Hyper' => 'Hyper (Control+Option+Shift+Command)');
 	private static $mod_to_title_win = array('⌃' => 'Control', '⌥' => 'Alt', '⇧' => 'Shift', '⌘' => 'Win', 'Fn' => 'Function', 'Hyper' => 'Hyper');
 	private static $upper_map = array(',' => '<', '.' => '>', '/' => '?', ';' => ':', "'" => '"', '[' => '{', ']' => '}', '\\' => '|', '-' => '_', '=' => '+');
-	private static $option_keys = array('plus', 'text', 'mod_text', 'key_text', 'use_plus', 'use_modifier_symbols', 'use_key_symbols', 'symbols', 'modifier_symbols', 'key_symbols');
+	private static $option_keys = array('plus', 'text', 'mod_text', 'key_text', 'use_plus', 'use_modifier_symbols', 'use_key_symbols', 'symbols', 'modifier_symbols', 'key_symbols', 'preset', 'style_preset');
 
 	/**
 	 * Init: register shortcodes and frontend style.
@@ -52,25 +52,24 @@ class BTKBD_Kbd
 	}
 
 	/**
-	 * Enqueue frontend style (default + optional custom CSS).
-	 * Custom CSS is enqueued as a separate inline-only handle so it prints even when
-	 * the shortcode runs after wp_head (it then outputs in footer and overrides default).
+	 * Enqueue frontend style.
 	 */
 	public static function enqueue_frontend_style()
 	{
 		wp_enqueue_style('btkbd-frontend');
 
-		$saved = array();
+		$preset = 'default';
 		if (defined('BTKBD_OPTION_NAME')) {
 			$raw = get_option(BTKBD_OPTION_NAME, array());
 			$saved = is_array($raw) ? $raw : array();
+			$preset = self::sanitize_style_preset(isset($saved['style_preset']) ? $saved['style_preset'] : 'default');
 		}
-		$custom_css = isset($saved['custom_css']) ? trim((string) $saved['custom_css']) : '';
-		if ($custom_css !== '') {
-			wp_register_style('btkbd-frontend-custom', false, array('btkbd-frontend'), BTKBD_VERSION);
-			wp_enqueue_style('btkbd-frontend-custom');
-			// Escape late: the option is injected into a <style> tag.
-			wp_add_inline_style('btkbd-frontend-custom', esc_html($custom_css));
+
+		$preset_css = self::get_preset_css($preset);
+		if ($preset_css !== '') {
+			wp_register_style('btkbd-frontend-preset', false, array('btkbd-frontend'), BTKBD_VERSION);
+			wp_enqueue_style('btkbd-frontend-preset');
+			wp_add_inline_style('btkbd-frontend-preset', $preset_css);
 		}
 	}
 
@@ -88,6 +87,7 @@ class BTKBD_Kbd
 		'use_modifier_symbols' => true,
 		'use_key_symbols' => true,
 		'style' => 'mac',
+		'style_preset' => 'default',
 	);
 
 	public static function shortcode($atts, $content = null, $tag = '')
@@ -106,6 +106,7 @@ class BTKBD_Kbd
 		$use_key_symbol = isset($opts['use_key_symbols']) ? (bool) $opts['use_key_symbols'] : self::$shortcode_defaults['use_key_symbols'];
 		$use_plus = isset($opts['use_plus']) ? (bool) $opts['use_plus'] : self::$shortcode_defaults['use_plus'];
 		$style = isset($opts['style']) && $opts['style'] === 'windows' ? 'windows' : 'mac';
+		$preset = self::sanitize_style_preset(isset($opts['style_preset']) ? $opts['style_preset'] : 'default');
 
 		foreach ($atts as $k => $v) {
 			$v = trim((string) $v);
@@ -124,6 +125,9 @@ class BTKBD_Kbd
 				continue;
 			}
 			if (in_array(strtolower($k), self::$option_keys, true)) {
+				if ($k === 'preset' || $k === 'style_preset') {
+					$preset = self::sanitize_style_preset($v);
+				}
 				continue;
 			}
 			$parts[] = $v;
@@ -143,6 +147,11 @@ class BTKBD_Kbd
 			$use_plus = true;
 		}
 
+		$preset_attr = self::parse_preset_attr($atts, array('preset', 'style_preset'));
+		if ($preset_attr !== null) {
+			$preset = $preset_attr;
+		}
+
 		$raw = !empty($parts) ? implode(' ', $parts) : '';
 		if ($content !== null && trim((string) $content) !== '') {
 			$raw = trim((string) $content);
@@ -151,8 +160,25 @@ class BTKBD_Kbd
 		if ($raw === '') {
 			return '';
 		}
-		self::enqueue_frontend_style();
+		self::enqueue_frontend_style_for_preset($preset);
 		return '<span class="btkbd">' . self::render($raw, $use_mod_symbol, $use_key_symbol, $use_plus, $style) . '</span>';
+	}
+
+	/**
+	 * Enqueue frontend style for a specific preset.
+	 *
+	 * @param string $preset Preset slug.
+	 */
+	private static function enqueue_frontend_style_for_preset($preset)
+	{
+		wp_enqueue_style('btkbd-frontend');
+		$preset_css = self::get_preset_css(self::sanitize_style_preset($preset));
+		if ($preset_css === '') {
+			return;
+		}
+		wp_register_style('btkbd-frontend-preset', false, array('btkbd-frontend'), BTKBD_VERSION);
+		wp_enqueue_style('btkbd-frontend-preset');
+		wp_add_inline_style('btkbd-frontend-preset', $preset_css);
 	}
 
 	/**
@@ -178,6 +204,58 @@ class BTKBD_Kbd
 			}
 		}
 		return $default;
+	}
+
+	/**
+	 * Parse preset attribute.
+	 *
+	 * @param array $atts Attributes.
+	 * @param array $keys Keys to check.
+	 * @return string|null
+	 */
+	private static function parse_preset_attr($atts, $keys)
+	{
+		foreach ($keys as $key) {
+			if (!array_key_exists($key, $atts)) {
+				continue;
+			}
+			return self::sanitize_style_preset((string) $atts[$key]);
+		}
+		return null;
+	}
+
+	/**
+	 * Sanitize style preset slug.
+	 *
+	 * @param string $preset Preset slug.
+	 * @return string
+	 */
+	private static function sanitize_style_preset($preset)
+	{
+		$allowed = array('default', 'light', 'dark', 'modern');
+		$preset = is_string($preset) ? strtolower($preset) : 'default';
+		return in_array($preset, $allowed, true) ? $preset : 'default';
+	}
+
+	/**
+	 * Get preset CSS override for keycaps.
+	 *
+	 * @param string $preset Preset slug.
+	 * @return string
+	 */
+	private static function get_preset_css($preset)
+	{
+		$preset = self::sanitize_style_preset($preset);
+		if ($preset === 'light') {
+			return '.btkbd .keycombo kbd{color:#1f2937;background:linear-gradient(180deg,#ffffff 0%,#f3f4f6 100%);border-color:#d1d5db;border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.85);}.btkbd .keycombo .combiner{color:#6b7280;}.btkbd .keycombo.separator{color:#9ca3af;}';
+		}
+		if ($preset === 'dark') {
+			return '.btkbd .keycombo kbd{color:#f9fafb;background:linear-gradient(180deg,#3f3f46 0%,#27272a 100%);border-color:#52525b;border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);}.btkbd .keycombo .combiner{color:#cbd5e1;}.btkbd .keycombo.separator{color:#94a3b8;}';
+		}
+		if ($preset === 'modern') {
+			return '.btkbd .keycombo kbd{color:#0f172a;background:linear-gradient(180deg,#f8fafc 0%,#e2e8f0 100%);border-color:#cbd5e1;border-radius:8px;box-shadow:0 2px 0 rgba(15,23,42,.14),0 1px 0 rgba(255,255,255,.8) inset;font-weight:600;padding:0 .45em;}.btkbd .keycombo .combiner{color:#475569;font-weight:500;}.btkbd .keycombo.separator{color:#64748b;}';
+		}
+		return '';
 	}
 
 	/**

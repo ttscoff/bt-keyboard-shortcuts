@@ -18,7 +18,10 @@ BT Keyboard Shortcuts renders keyboard shortcuts in Apple-style symbols (⌘, �
 In the block or classic editor, type the shortcode directly (e.g. `[btkbd cmd shift p]`), or use the formatting dropdown and choose **⌘ Insert keyboard shortcut** to open a dialog where you pick modifiers and key and insert the generated shortcode.
 
 = Settings page =
-The plugin has a **Settings** page: click **Settings** next to the plugin on the **Plugins** screen, or go to **Settings → Keyboard Shortcuts**. There you can toggle the + separator, modifier symbols vs text, key symbols, and custom CSS for `.btkbd` keys. A live preview updates as you change options.
+The plugin has a **Settings** page: click **Settings** next to the plugin on the **Plugins** screen, or go to **Settings → Keyboard Shortcuts**. There you can toggle the + separator, modifier symbols vs text, key symbols, Mac vs Windows naming, and style presets (Default, Light, Dark, Modern).
+
+= Styling =
+To customize `.btkbd` styles, use WordPress core **Additional CSS** in Appearance → Customize (or the Site Editor equivalent for block themes).
 
 = Windows compatibility =
 On the Settings page, use **Mac / Windows symbols and names** to choose **Windows (⊞ Win, Alt)** instead of **Mac (⌘ Command, ⌥ Option)** so shortcuts render with Windows-style symbols and labels for your audience.

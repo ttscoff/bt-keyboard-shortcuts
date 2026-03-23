@@ -6,15 +6,15 @@
 - **Symbols or text**: Mac/Windows modifier symbols (&#x2318;, &#x21E7;, &#x2325;, &#x2303;) or text labels (Command, Shift, Option, Control)
 - **Automatically sort** modifiers in the order specified by Apple's guidelines
 - **Editor integration**: Insert keyboard shortcut dialog in the classic and block editors
-- **Settings page**: Toggle + separator, modifier symbols, key symbols, and Mac vs Windows naming
-- **Custom CSS**: Override styling for `.btkbd` keyboard keys with live preview
+- **Settings page**: Toggle + separator, modifier symbols, key symbols, Mac vs Windows naming, and built-in visual presets
+- **Core CSS workflow**: Style `.btkbd` keyboard keys using WordPress's built-in Additional CSS editor
 
 ## Installation
 
 1. Download the [latest release](https://github.com/ttscoff/bt-keyboard-shortcuts/releases/latest/download/bt-keyboard-shortcuts.zip) and unzip.
 2. Upload the `bt-keyboard-shortcuts` folder to `/wp-content/plugins/`.
 3. Activate the plugin via **Plugins** in WordPress.
-4. Go to **Settings** (under the plugin on the Plugins page) to configure display and CSS.
+4. Go to **Settings** (under the plugin on the Plugins page) to configure display options.
 
 {% img aligncenter /uploads/2026/02/kbd-settings-link.jpg 920 93 "Plugins page: BT Keyboard Shortcuts with Settings link" "Plugins page: BT Keyboard Shortcuts with Settings link" %}
 ![Plugins page: BT Keyboard Shortcuts with Settings link](images/kbd-settings-link@2x.jpg "BT Keyboard Shortcuts plugin with Settings link highlighted")
@@ -34,10 +34,10 @@ In the **Keyboard shortcut** dialog, check modifier keys (Win/Alt/Shift/Ctrl/Fn)
 
 Under **Settings &rarr; Keyboard Shortcuts** (or via the plugin's **Settings** link), you can:
 
-- **Display**: Show + separator (e.g. &#x2318;+&#x2325;+S), use modifier symbols (&#x2318;&#x21E7;&#x2325;&#x2303;) vs text, use symbol entities for keys (Tab, Return, etc.), and choose **Mac** or **Windows** symbols and names.
-- **Custom CSS**: Override default styling for `.btkbd` keyboard keys. Changes update the preview below.
+- **Display**: Show + separator (e.g. &#x2318;+&#x2325;+S), use modifier symbols (&#x2318;&#x21E7;&#x2325;&#x2303;) vs text, use symbol entities for keys (Tab, Return, etc.), choose **Mac** or **Windows** symbols and names, and pick a built-in style preset (**Default**, **Light**, **Dark**, **Modern**).
+- **Styling**: Use WordPress core **Additional CSS** (or block-theme Site Editor equivalent) to style `.btkbd` keyboard keys.
 
-{% img aligncenter /uploads/2026/02/kbd-settings-800.jpg 721 800 "Keyboard Shortcuts settings: Display options and Custom CSS with preview" "Keyboard Shortcuts settings: Display options and Custom CSS with preview" %}![Keyboard Shortcuts settings: Display options and Custom CSS with preview](images/kbd-settings-800@2x.jpg "Settings page with Display options and Custom CSS with live preview")
+{% img aligncenter /uploads/2026/02/kbd-settings-800.jpg 721 800 "Keyboard Shortcuts settings: Display options" "Keyboard Shortcuts settings: Display options" %}![Keyboard Shortcuts settings: Display options](images/kbd-settings-800@2x.jpg "Settings page with display options")
 
 ## Shortcode syntax
 
@@ -62,7 +62,7 @@ Modifier keys are automatically rearranged to match the order recommended by App
 
 ## Frontend output
 
-On the frontend, the shortcode renders as styled keycaps (e.g. &#x21E7; &#x2318; L and &#x2325; &#x2318; V), using your display and CSS settings.
+On the frontend, the shortcode renders as styled keycaps (e.g. &#x21E7; &#x2318; L and &#x2325; &#x2318; V), using your display settings and theme/CSS styling.
 
 {% img aligncenter /uploads/2026/02/kbd-post.jpg 442 80 "Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V" %}![Rendered keyboard shortcuts: Shift-Command-L and Option-Command-V](images/kbd-post@2x.jpg "Rendered shortcuts: Press &#x21E7;&#x2318;L and then &#x2325;&#x2318;V")
 
