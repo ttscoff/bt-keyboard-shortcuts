@@ -1,74 +1,244 @@
-<p><strong>Requires:</strong> WordPress 5.8+, PHP 7.4+</p>
-<h2 id="features">Features</h2>
-<ul>
-<li><strong>Shortcode <code>[kbd]</code></strong> for ⌘⇧⌥⌃-style output anywhere shortcodes are supported</li>
-<li><strong>Symbols or text</strong>: Mac/Windows modifier symbols (⌘, ⇧, ⌥, ⌃) or text labels (Command, Shift, Option, Control)</li>
-<li><strong>Automatically sort</strong> modifiers in the order specified by Apple’s guidelines</li>
-<li><strong>Editor integration</strong>: Insert keyboard shortcut dialog in the classic and block editors</li>
-<li><strong>Settings page</strong>: Toggle + separator, modifier symbols, key symbols, and Mac vs Windows naming</li>
-<li><strong>Custom CSS</strong>: Override styling for <code>.btkbd</code> keyboard keys with live preview</li>
-</ul>
-<h2 id="installation">Installation</h2>
-<ol>
-<li>Download the <a href="https://github.com/ttscoff/bt-keyboard-shortcuts/releases/latest/download/bt-keyboard-shortcuts.zip">latest release</a> and unzip.</li>
-<li>Upload the <code>bt-keyboard-shortcuts</code> folder to <code>/wp-content/plugins/</code>.</li>
-<li>Activate the plugin via <strong>Plugins</strong> in WordPress.</li>
-<li>Go to <strong>Settings</strong> (under the plugin on the Plugins page) to configure display and CSS.</li>
-</ol>
-<p>![Plugins page: BT Keyboard Shortcuts with Settings <a href="images/kbd-settings-link@2x.jpg%5D(mailto:link%5D(images/kbd-settings-link@2x.jpg)" title="BT Keyboard Shortcuts plugin with Settings link highlighted">link</a></p>
-<h2 id="inserting-shortcuts-in-the-editor">Inserting shortcuts in the editor</h2>
-<p>In the block or classic editor, use the formatting dropdown and choose <strong>Insert keyboard shortcut</strong> to open the shortcut dialog.</p>
-<p>![Editor dropdown with Insert keyboard shortcut <a href="images/kbd-insert@2x.jpg%5D(mailto:option%5D(images/kbd-insert@2x.jpg)" title="Editor formatting menu with Insert keyboard shortcut option">option</a></p>
-<p>In the <strong>Keyboard shortcut</strong> dialog, check modifier keys (Win/Alt/Shift/Ctrl/Fn), enter the main key, and use the generated shortcode. Click <strong>Insert</strong> to add it to the content.</p>
-<p>![Keyboard shortcut dialog with modifiers and generated <a href="images/kbd-shortcut-editor@2x.jpg%5D(mailto:shortcode%5D(images/kbd-shortcut-editor@2x.jpg)" title="Keyboard shortcut dialog with modifiers, key field, and generated shortcode">shortcode</a></p>
-<h2 id="settings">Settings</h2>
-<p>Under <strong>Settings → Keyboard Shortcuts</strong> (or via the plugin’s <strong>Settings</strong> link), you can:</p>
-<ul>
-<li><strong>Display</strong>: Show + separator (e.g. ⌘+⌥+S), use modifier symbols (⌘⇧⌥⌃) vs text, use symbol entities for keys (Tab, Return, etc.), and choose <strong>Mac</strong> or <strong>Windows</strong> symbols and names.</li>
-<li><strong>Custom CSS</strong>: Override default styling for <code>.btkbd</code> keyboard keys. Changes update the preview below.</li>
-</ul>
-<p>![Keyboard Shortcuts settings: Display options and Custom CSS with <a href="images/kbd-settings-800@2x.jpg%5D(mailto:preview%5D(images/kbd-settings-800@2x.jpg)" title="Settings page with Display options and Custom CSS with live preview">preview</a></p>
-<h2 id="shortcode-syntax">Shortcode syntax</h2>
-<table>
-<thead>
-<tr>
-<th>Syntax</th>
-<th>Example</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Modifiers + key</td>
-<td><code>[kbd cmd shift p]</code></td>
-<td>⌘⇧P (symbols, combined)</td>
-</tr>
+<p>
+<strong>  Requires:</strong> WordPress 5.8+, PHP 7.4+
+</p>
 
-<tr>
-<td>Text labels</td>
-<td><code>[kbd cmd shift p text]</code></td>
-<td>Shift-Command-P</td>
-</tr>
-<tr>
-<td>Shortcut symbols</td>
-<td><code>[kbd @$P]</code></td>
-<td>Shift-Command-P</td>
-</tr>
-<tr>
-<td>Arrow keys</td>
-<td><code>[kbd right]</code></td>
-<td>→ Right Arrow</td>
-</tr>
-</tbody>
+<h2 id="features">
+  Features
+</h2>
+
+<ul>
+
+  <li>
+<strong>    Shortcode <code>[btkbd]</code></strong> for ⌘⇧⌥⌃-style output anywhere shortcodes are supported
+  </li>
+
+  <li>
+<strong>    Symbols or text</strong>: Mac/Windows modifier symbols (⌘, ⇧, ⌥, ⌃) or text labels (Command, Shift, Option, Control)
+  </li>
+
+  <li>
+<strong>    Automatically sort</strong> modifiers in the order specified by Apple’s guidelines
+  </li>
+
+  <li>
+<strong>    Editor integration</strong>: Insert keyboard shortcut dialog in the classic and block editors
+  </li>
+
+  <li>
+<strong>    Settings page</strong>: Toggle + separator, modifier symbols, key symbols, Mac vs Windows naming, and built-in visual presets
+  </li>
+
+  <li>
+<strong>    Core CSS workflow</strong>: Style <code>.btkbd</code> keyboard keys using WordPress’s built-in Additional CSS editor
+  </li>
+
+</ul>
+
+<h2 id="installation">
+  Installation
+</h2>
+
+<ol>
+
+  <li>
+    Download the <a href="https://github.com/ttscoff/bt-keyboard-shortcuts/releases/latest/download/bt-keyboard-shortcuts.zip">latest release</a> and unzip.
+  </li>
+
+  <li>
+    Upload the <code>bt-keyboard-shortcuts</code> folder to <code>/wp-content/plugins/</code>.
+  </li>
+
+  <li>
+    Activate the plugin via <strong>Plugins</strong> in WordPress.
+  </li>
+
+  <li>
+    Go to <strong>Settings</strong> (under the plugin on the Plugins page) to configure display options.
+  </li>
+
+</ol>
+
+<p>
+  ![Plugins page: BT Keyboard Shortcuts with Settings <a href="images/kbd-settings-link@2x.jpg%5D(mailto:link%5D(images/kbd-settings-link@2x.jpg)" title="BT Keyboard Shortcuts plugin with Settings link highlighted">link</a>
+</p>
+
+<h2 id="inserting-shortcuts-in-the-editor">
+  Inserting shortcuts in&nbsp;the&nbsp;editor
+</h2>
+
+<p>
+  In the block or classic editor, use the formatting dropdown and choose <strong>Insert keyboard shortcut</strong> to open the shortcut dialog.
+</p>
+
+<p>
+  ![Editor dropdown with Insert keyboard shortcut <a href="images/kbd-insert@2x.jpg%5D(mailto:option%5D(images/kbd-insert@2x.jpg)" title="Editor formatting menu with Insert keyboard shortcut option">option</a>
+</p>
+
+<p>
+  In the <strong>Keyboard shortcut</strong> dialog, check modifier keys (Win/Alt/Shift/Ctrl/Fn), enter the main key, and use the generated shortcode. Click <strong>Insert</strong> to add it to the content.
+</p>
+
+<p>
+  ![Keyboard shortcut dialog with modifiers and generated <a href="images/kbd-shortcut-editor@2x.jpg%5D(mailto:shortcode%5D(images/kbd-shortcut-editor@2x.jpg)" title="Keyboard shortcut dialog with modifiers, key field, and generated shortcode">shortcode</a>
+</p>
+
+<h2 id="settings">
+  Settings
+</h2>
+
+<p>
+  Under <strong>Settings → Keyboard Shortcuts</strong> (or via the plugin’s <strong>Settings</strong> link), you can:
+</p>
+
+<ul>
+
+  <li>
+<strong>    Display</strong>: Show + separator (e.g. ⌘+⌥+S), use modifier symbols (⌘⇧⌥⌃) vs text, use symbol entities for keys (Tab, Return, etc.), choose <strong>Mac</strong> or <strong>Windows</strong> symbols and names, and pick a built-in style preset (<strong>Default</strong>, <strong>Light</strong>, <strong>Dark</strong>, <strong>Modern</strong>).
+  </li>
+
+  <li>
+<strong>    Styling</strong>: Use WordPress core <strong>Additional CSS</strong> (or block-theme Site Editor equivalent) to style <code>.btkbd</code> keyboard keys.
+  </li>
+
+</ul>
+
+<p>
+  ![Keyboard Shortcuts settings: Display <a href="images/kbd-settings-800@2x.jpg%5D(mailto:options%5D(images/kbd-settings-800@2x.jpg)" title="Settings page with display options">options</a>
+</p>
+
+<h2 id="shortcode-syntax">
+  Shortcode&nbsp;syntax
+</h2>
+
+<table>
+
+  <thead>
+
+    <tr>
+
+      <th>
+        Syntax
+      </th>
+
+      <th>
+        Example
+      </th>
+
+      <th>
+        Output
+      </th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr>
+
+      <td>
+        Modifiers + key
+      </td>
+
+      <td>
+<code>[btkbd cmd shift p]</code>
+      </td>
+
+      <td>
+        ⌘⇧P (symbols, combined)
+      </td>
+
+    </tr>
+    <tr>
+
+      <td>
+        Text labels
+      </td>
+
+      <td>
+<code>[btkbd cmd shift p text]</code>
+      </td>
+
+      <td>
+        Shift-Command-P
+      </td>
+
+    </tr>
+    <tr>
+
+      <td>
+        Shortcut symbols
+      </td>
+
+      <td>
+<code>[btkbd @$P]</code>
+      </td>
+
+      <td>
+        Shift-Command-P
+      </td>
+
+    </tr>
+    <tr>
+
+      <td>
+        Arrow keys
+      </td>
+
+      <td>
+<code>[btkbd right]</code>
+      </td>
+
+      <td>
+        → Right Arrow
+      </td>
+
+    </tr>
+  </tbody>
+
 </table>
-<h3 id="supported-modifiers">Supported modifiers</h3>
-<p><code>cmd</code>/<code>command</code>, <code>ctrl</code>/<code>control</code>, <code>opt</code>/<code>alt</code>, <code>shift</code>, <code>fn</code>, <code>hyper</code></p>
-<p>You can also use symbol shorthand in the shortcode: <code>$</code> (Shift), <code>@</code> (Command/Win), <code>~</code> (Option), <code>^</code> (CTRL). For example, <code>[kbd @$p]</code> renders as ⇧⌘P.</p>
-<p>Modifier keys are automatically rearranged to match the order recommended by Apple in their <a href="https://developer.apple.com/design/human-interface-guidelines/keyboard-shortcuts">Human Interface Guidelines</a> (e.g. ⌃ ⌥ ⇧ ⌘ before the key), regardless of the order you type them.</p>
-<h3 id="key-names">Key names</h3>
-<p><code>tab</code>, <code>return</code>, <code>enter</code>, <code>delete</code>, <code>esc</code>, <code>right</code>, <code>left</code>, <code>up</code>, <code>down</code>, <code>pgup</code>, <code>pgdn</code>, <code>home</code>, <code>end</code>, <code>space</code>, <code>caps</code>, <code>f1</code>–<code>f12</code></p>
-<h2 id="frontend-output">Frontend output</h2>
-<p>On the frontend, the shortcode renders as styled keycaps (e.g. ⇧ ⌘ L and ⌥ ⌘ V), using your display and CSS settings.</p>
-<p>![Rendered keyboard shortcuts: Shift-Command-L and <a href="images/kbd-post@2x.jpg%5D(mailto:Option-Command-V%5D(images/kbd-post@2x.jpg)" title="Rendered shortcuts: Press ⇧⌘L and then ⌥⌘V">Option-Command-V</a></p>
-<h2 id="license">License</h2>
-<p>GPLv2 or later.</p>
+
+<h3 id="supported-modifiers">
+  Supported&nbsp;modifiers
+</h3>
+
+<p>
+<code>cmd</code>/<code>command</code>, <code>ctrl</code>/<code>control</code>, <code>opt</code>/<code>alt</code>, <code>shift</code>, <code>fn</code>, <code>hyper</code>
+</p>
+
+<p>
+  You can also use symbol shorthand in the shortcode: <code>$</code> (Shift), <code>@</code> (Command/Win), <code>~</code> (Option), <code>^</code> (CTRL). For example, <code>[btkbd @$p]</code> renders as ⇧⌘P.
+</p>
+
+<p>
+  Modifier keys are automatically rearranged to match the order recommended by Apple in their <a href="https://developer.apple.com/design/human-interface-guidelines/keyboard-shortcuts">Human Interface Guidelines</a> (e.g. ⌃ ⌥ ⇧ ⌘ before the key), regardless of the order you type them.
+</p>
+
+<h3 id="key-names">
+  Key&nbsp;names
+</h3>
+
+<p>
+<code>tab</code>, <code>return</code>, <code>enter</code>, <code>delete</code>, <code>esc</code>, <code>right</code>, <code>left</code>, <code>up</code>, <code>down</code>, <code>pgup</code>, <code>pgdn</code>, <code>home</code>, <code>end</code>, <code>space</code>, <code>caps</code>, <code>f1</code>–<code>f12</code>
+</p>
+
+<h2 id="frontend-output">
+  Frontend&nbsp;output
+</h2>
+
+<p>
+  On the frontend, the shortcode renders as styled keycaps (e.g. ⇧ ⌘ L and ⌥ ⌘ V), using your display settings and theme/CSS styling.
+</p>
+
+<p>
+  ![Rendered keyboard shortcuts: Shift-Command-L and <a href="images/kbd-post@2x.jpg%5D(mailto:Option-Command-V%5D(images/kbd-post@2x.jpg)" title="Rendered shortcuts: Press ⇧⌘L and then ⌥⌘V">Option-Command-V</a>
+</p>
+
+<h2 id="license">
+  License
+</h2>
+
+<p>
+  GPLv2 or later.
+</p>
+
