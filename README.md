@@ -45,9 +45,11 @@ Under **Settings &rarr; Keyboard Shortcuts** (or via the plugin's **Settings** l
 | Syntax           | Example                  | Output                                |
 | ---------------- | ------------------------ | ------------------------------------- |
 | Modifiers + key  | `[btkbd cmd shift p]`      | &#x2318;&#x21E7;P (symbols, combined) |
-| Text labels      | `[btkbd cmd shift p text]` | Shift-Command-P                       |
-| Shortcut symbols | `[btkbd @$P]`              | Shift-Command-P                       |
+| Shortcut symbols | `[btkbd $@p]`              | &#x2318;&#x21E7;P                      |
+| Hyphenated text  | `[btkbd Command-Shift-P]`  | &#x2318;&#x21E7;P                      |
 | Arrow keys       | `[btkbd right]`            | &rarr; Right Arrow                    |
+
+Display format (symbols/text and plus separators) is controlled by plugin settings.
 
 ### Supported modifiers
 

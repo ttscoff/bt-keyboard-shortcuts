@@ -27,11 +27,12 @@ To customize `.btkbd` styles, use WordPress core **Additional CSS** in Appearanc
 On the Settings page, use **Mac / Windows symbols and names** to choose **Windows (⊞ Win, Alt)** instead of **Mac (⌘ Command, ⌥ Option)** so shortcuts render with Windows-style symbols and labels for your audience.
 
 = Syntax =
-`[btkbd cmd shift p]` → ⌘⇧P (symbols, combined)
-`[btkbd cmd shift p plus]` → ⌘+⇧+P (with + separator)
-`[btkbd cmd shift p text]` → Command-Shift-P (text labels)
-`[btkbd cmd p mod_text]` → Command-Shift-P (modifiers as text, P as symbol)
-`[btkbd right key_text]` → → Right Arrow
+`[btkbd cmd shift p]` → ⇧⌘P (symbols, combined)
+`[btkbd $@p]` → ⇧⌘P (symbol shorthand input)
+`[btkbd Command-Shift-P]` → ⇧⌘P (hyphenated text input)
+`[btkbd right]` → → Right Arrow
+
+Display format (symbols/text and plus separators) is controlled by plugin settings.
 
 = Supported modifiers =
 cmd/command, ctrl/control, opt/alt, shift, fn, hyper
