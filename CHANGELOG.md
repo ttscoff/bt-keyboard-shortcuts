@@ -1,3 +1,12 @@
+### 1.0.4
+
+2026-05-20 15:05
+
+#### CHANGED
+
+- Tested up to WordPress 7.1 in plugin readme
+- Readme.txt example for symbol shorthand now shows correct modifier order (P for `[btkbd @$p]`)
+
 ### 1.0.3
 
 2026-03-24 09:48
