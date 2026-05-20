@@ -3,7 +3,7 @@
  * Plugin Name: BT Keyboard Shortcuts
  * Plugin URI: https://github.com/ttscoff/bt-keyboard-shortcuts/
  * Description: Apple-style keyboard shortcut markup. Shortcode [btkbd] for ⌘⇧P-style output.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Brett Terpstra
  * Author URI: https://brettterpstra.com
  * License: GPLv2 or later

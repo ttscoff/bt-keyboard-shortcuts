@@ -2,9 +2,9 @@
 Contributors: bterp
 Tags: keyboard, shortcut, kbd, markup
 Requires at least: 5.8
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,7 @@ Display format (symbols/text and plus separators) is controlled by plugin settin
 = Supported modifiers =
 cmd/command, ctrl/control, opt/alt, shift, fn, hyper
 
-You can also use symbol shorthand in the shortcode: $ (shift), @ (command), ~ (option), ^ (control). For example, `[btkbd @$p]` renders as ⌘⇧P.
+You can also use symbol shorthand in the shortcode: $ (shift), @ (command), ~ (option), ^ (control). For example, `[btkbd @$p]` renders as ⇧⌘P.
 
 Modifier keys are automatically rearranged to match the order recommended by Apple in their Human Interface Guidelines (e.g. Control, Option, Shift, Command before the key), regardless of the order you type them in the shortcode.
 
